@@ -11,9 +11,9 @@
 # These are flags you must include - Two memory and one runtime.
 # Runtime is either seconds or hours:min:sec
 
-#$ -l tmem=2G
-#$ -l h_rt=3600 
-#$ -l gpu=true
+#$ -l tmem=32G
+#$ -l h_rt=00:30:00
+#$ -l gpu=true,gpu_type=h100
 
 
 #These are optional flags but you probably want them in all jobs
@@ -27,7 +27,9 @@
 hostname
 date 
 
-source /share/apps/source_files/python/python-3.9.5.source
-python3 classification/train.py
+source /share/apps/source_files/anaconda/conda-2022-5.source
+conda activate nnunet
+
+python code/classification/train.py
 
 date
